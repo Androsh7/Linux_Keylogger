@@ -14,6 +14,7 @@ g++ -o Keylogger Keylogger.cpp -lX11
 - Xlib depends on an X server being present, which not all Linux distributions will have. A future implementation could be to ensure that an X server exists on the computer before proceeding.
 - Carefully work on edge cases. What about non-standard keyboards? Multiple key presses? Held down key press? Etc.
 - When extracting the data, an attacker may want to encrypt or encode the data. It might also be better to look into refraining from writing into the log file every key press, which may give the keylogger away.
+- The keylogger is not capturing all keys if typing too fast. This may just need more optimization with the code to perform faster.
 
 ### VirusTotal Report (1/17/2025):
 
